@@ -12,6 +12,11 @@ Since the deploy job makes use of environments. We can create the secrets inside
 The workflow makes use of [https://github.com/Azure/k8s-create-secret](https://github.com/Azure/k8s-create-secret) action.
 * Go to `Repo Settings > Environments > Production`
 * Creating secrets of type `generic` or `kubernetes.io/dockerconfigjson` is easy. If you already have the secret in k8s then just run this command - `kubectl get secret <SECRET_NAME> -o jsonpath='{.data}' -n <NAMESPACE>` then copy the output to the secret value inside that specific environment secret on github. Then provide this secret to `k8s-create-secret` action as a value of `data` attribute.
+* To get the kubernetes config of the current context, run below command
+  ```
+  kubectl config view --minify --flatten
+  ```
+  Then copy the output to `KUBECONFIG` secret.
 
 Make sure you have setup below secrets inside `Production` environment configurations
 - AUTH_SECRET
