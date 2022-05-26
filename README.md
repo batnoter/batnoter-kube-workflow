@@ -28,4 +28,5 @@ Make sure you have setup below secrets inside `Production` environment configura
 
 ### Using a new k8s cluster for deployment
 * Make sure that you have updated the value of `KUBECONFIG` environment secret with the kubeconfig of newly created cluster.
+* If you own a digital ocean cluster then you can simply download the kube config file cluster overview. The contents of this file can be copied directly to `KUBECONFIG` github secret
 * After the first deployment on new cluster, update the domain's `A` record to point to the newly created load balancer.
